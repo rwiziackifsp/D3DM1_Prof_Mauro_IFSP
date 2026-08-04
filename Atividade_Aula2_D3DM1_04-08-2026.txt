@@ -1,0 +1,17 @@
+void main(){
+
+  String nome = 'Camiseta ADS';
+  int quantidade = 3; 
+  double preco = 49.90;
+  bool disponivel = true;
+  double imposto = 5.0;
+  
+  var precoTotal = (quantidade * preco) * (1 + (imposto/100));
+  var precoFormatado = precoTotal.toString().replaceAll('.', ',');
+  
+  print('Produto: $nome');
+  print('Disponível em estoque: $disponivel');
+  print('Quantidade: $quantidade');
+  print('Preço unitário: $preco');
+  print('Valot total: R\$ $precoFormatado');
+}
