@@ -1,0 +1,87 @@
+import 'package:aula_15092026/frase_controle.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+void main() {
+  runApp(const Janela());
+}
+
+class Janela extends StatelessWidget {
+  const Janela({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Scaffold(body: Principal()),
+    );
+  }
+}
+
+class Principal extends StatefulWidget {
+  const Principal({super.key});
+
+  @override
+  State<Principal> createState() => _PrincipalState();
+}
+
+class _PrincipalState extends State<Principal> {
+  // Por meio da classe FraseModelo em frase_modelo.dart e FraseControle em frases_controle.dart
+  FraseControle controle = FraseControle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          controle.fraseAtual.texto,
+          style: GoogleFonts.montserrat(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          controle.fraseAtual.autor,
+          style: GoogleFonts.msMadi(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              setState(() {
+                controle.proximaFrase();
+              });
+            },
+            child: Text('Próxima')),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              controle.fraseAtual.mudaLike();
+            });
+          },
+          child: Icon(controle.fraseAtual.liked
+              ? Icons.favorite
+              : Icons.favorite_border),
+        ) // aqui apenas mostra o coraçãozinho do fav, precisa do gesture detect com setState para marcarou desmarcar
+        // ElevatedButton.icon(
+        //   onPressed: () {
+        //     setState(() {
+        //       controle.liked(true);
+        //     });
+        //   },
+        //   icon: const Icon(Icons.thumb_up),
+        //   label: const Text('Gostei'),
+        // ),
+        // ElevatedButton.icon(
+        //   onPressed: () {
+        //     setState(() {
+        //       controle.liked(false);
+        //     });
+        //   },
+        //   icon: const Icon(Icons.thumb_down),
+        //   label: const Text('Não Gostei'),
+        // )
+      ],
+    );
+  }
+}

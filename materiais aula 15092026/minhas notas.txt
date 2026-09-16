@@ -1,0 +1,6 @@
+google font
+
+pegar por download e colocar como um asset ou usar o pacote
+porém por import no pubspec precisa usar a versão 6.1.0
+
+deve acusar falha no import do google font, apenas clicar na lâmpada e fazer o import do package

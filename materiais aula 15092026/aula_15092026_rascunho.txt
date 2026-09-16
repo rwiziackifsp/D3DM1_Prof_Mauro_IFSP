@@ -1,0 +1,76 @@
+main início da aula
+
+import 'package:aula_15092026/frase_controle.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const Janela());
+}
+
+class Janela extends StatelessWidget {
+  const Janela({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Scaffold(body: Principal()),
+    );
+  }
+}
+
+class Principal extends StatefulWidget {
+  const Principal({super.key});
+
+  @override
+  State<Principal> createState() => _PrincipalState();
+}
+
+class _PrincipalState extends State<Principal> {
+  // Por meio de variável, é preciso definir um inteito para o controle e adicionar o setState com if para controlar as questões
+  // var frases = [
+  //   ['Penso, logo existo.', 'René Descartes'],
+  //   ['Só sei que nada sei.', 'Sócrates'],
+  //   [
+  //     'Um pequeno passo para o homem, um salto gigante para a humanidade.',
+  //     'Neil Armstrong'
+  //   ]
+  // ];
+  // int atual = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    // Por meio da classe FraseModelo em frase_modelo.dart e FraseControle em frases_controle.dart
+    FraseControle controle = FraseControle();
+
+    return Column(
+      children: [
+        Text(controle.fraseAtual.texto),
+        Text(controle.fraseAtual.autor),
+        ElevatedButton(
+            onPressed: () {
+              setState(() {
+                controle.proximaFrase();
+              });
+            },
+            child: Text('Próxima'))
+        // Text('Penso, logo existo.'),
+        // Text('René Descartes'),
+        // Text(frases[0][0]), // Aqui chama o item pelo índice
+        // Text(frases[0][1]),
+        // Text(frases[atual][0]), // Com a variável 'atual' define o controle e chamadas dos valores
+        // Text(frases[atual][1]),
+        // ElevatedButton(
+        //     onPressed: () {
+        //       setState(() {
+        //         if (atual < 2) {
+        //           atual++;
+        //         } else {
+        //           atual = 0;
+        //         }
+        //       });
+        //     },
+        //     child: Text('Próxima'))
+      ],
+    );
+  }
+}
