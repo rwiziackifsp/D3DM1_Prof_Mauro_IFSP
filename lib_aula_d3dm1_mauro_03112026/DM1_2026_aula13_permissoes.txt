@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permissão de Internet (necessária para pacotes http, APIs, etc.) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    <!-- Permissão de Câmera (se o app tirar fotos) -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    
+    <!-- Permissão de Armazenamento (se salvar arquivos locais ou acessar galeria) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:label="seu_app"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <!-- Configurações do app -->
+    </application>
+</manifest>
